@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import ProductList from "./ProductList";
+import url_port from "./host";
 const ProductSec = () => {
   const [checked1, setChecked1] = useState(false);
   const [checked2, setChecked2] = useState(false);
@@ -8,8 +9,8 @@ const ProductSec = () => {
   const [checked4, setChecked4] = useState(false);
   const [product, setProduct] = useState([]);
   let pathValue = useRef("");
-  const {text} = useParams();
-  
+  const { text } = useParams();
+
   useEffect(() => {
     if (text === "Smart Phones") {
       setChecked1(true);
@@ -29,7 +30,7 @@ const ProductSec = () => {
 
   const getProduct = async () => {
     const response = await fetch(
-      `http://localhost:5000/api/product/${pathValue.current}`,
+      `http://${url_port}/api/product/${pathValue.current}`,
       {
         method: "GET",
         headers: {
@@ -47,7 +48,7 @@ const ProductSec = () => {
 
   const handleRadioClick = async (type, check) => {
     if (check === false) {
-      const response = await fetch(`http://localhost:5000/api/product/`, {
+      const response = await fetch(`http://${url_port}/api/product/`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -70,7 +71,7 @@ const ProductSec = () => {
       <div className="container my-5">
         <div className="row">
           <div className="col col-sm-3 filter" style={{ padding: "20px" }}>
-            <h5>Category</h5>
+            <h5> Category </h5>{" "}
             <div className="my-3 ">
               <div className="form-check my-2">
                 <input
@@ -85,11 +86,11 @@ const ProductSec = () => {
                     }
                   }}
                   onClick={() => handleRadioClick("Mobile", checked1)}
-                />
+                />{" "}
                 <label className="form-check-label" htmlFor="flexCheckDefault">
-                  Smart Phones
-                </label>
-              </div>
+                  Smart Phones{" "}
+                </label>{" "}
+              </div>{" "}
               <div className="form-check my-2">
                 <input
                   className="form-check-input"
@@ -103,11 +104,11 @@ const ProductSec = () => {
                     }
                   }}
                   onClick={() => handleRadioClick("Laptop", checked2)}
-                />
+                />{" "}
                 <label className="form-check-label" htmlFor="flexCheckDefault">
-                  Laptops
-                </label>
-              </div>
+                  Laptops{" "}
+                </label>{" "}
+              </div>{" "}
               <div className="form-check my-2">
                 <input
                   className="form-check-input"
@@ -121,11 +122,11 @@ const ProductSec = () => {
                     }
                   }}
                   onClick={() => handleRadioClick("Smart Device", checked3)}
-                />
+                />{" "}
                 <label className="form-check-label" htmlFor="flexCheckDefault">
-                  Smart Devices
-                </label>
-              </div>
+                  Smart Devices{" "}
+                </label>{" "}
+              </div>{" "}
               <div className="form-check my-2">
                 <input
                   className="form-check-input"
@@ -139,28 +140,33 @@ const ProductSec = () => {
                     }
                   }}
                   onClick={() => handleRadioClick("Headphone", checked4)}
-                />
+                />{" "}
                 <label className="form-check-label" htmlFor="flexCheckDefault">
-                  Headphones
-                </label>
-              </div>
-            </div>
-          </div>
+                  Headphones{" "}
+                </label>{" "}
+              </div>{" "}
+            </div>{" "}
+          </div>{" "}
           <div className="col d-flex row">
+            {" "}
             {product.map((element) => {
               return (
-                <Link to={`/product-list/${element.productType}/${element._id}`} className="col-md-4" key={element._id} style={{textDecoration: "none"}}>
+                <Link
+                  to={`/product-list/${element.productType}/${element._id}`}
+                  className="col-md-4"
+                  key={element._id}
+                  style={{ textDecoration: "none" }}
+                >
                   <ProductList
                     imageUrl={element.productImage}
                     spec={element.productSpecification.slice(0, 60)}
-                  />
+                  />{" "}
                 </Link>
-                
               );
-            })}
-          </div>
-        </div>
-      </div>
+            })}{" "}
+          </div>{" "}
+        </div>{" "}
+      </div>{" "}
     </>
   );
 };

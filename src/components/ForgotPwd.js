@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import backimg from "../images/backimg.png";
+import url_port from "./host";
 const ForgotPwd = () => {
   const [email, setEmail] = useState("");
   document.body.style.backgroundImage = `url(${backimg})`;
@@ -13,7 +14,7 @@ const ForgotPwd = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch("http://localhost:5000/api/auth/forgot-password", {
+    const response = await fetch(`http://${url_port}/api/auth/forgot-password`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",

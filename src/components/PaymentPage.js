@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import url_port from "./host";
 
 const PaymentPage = () => {
   const { text, item } = useParams();
@@ -64,7 +65,7 @@ const PaymentPage = () => {
       return;
     }
 
-    const data = await fetch("http://localhost:5000/api/payment/razorpay", {
+    const data = await fetch(`http://${url_port}/api/payment/razorpay`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -81,7 +82,7 @@ const PaymentPage = () => {
       description: "Test Transaction",
       image: "https://i.postimg.cc/0ySvtgvM/logo-3.jpg",
       order_id: data.id,
-      callback_url: "http://localhost:5000/api/payment/verification",
+      callback_url: `http://${url_port}/api/payment/verification`,
       prefill: {
         name: name,
         email: email,
@@ -107,7 +108,7 @@ const PaymentPage = () => {
 
   return (
     <div className="container d-flex flex-column align-items-center justify-content-center my-3 payment">
-      <p style={{ fontWeight: "bold" }}>Choose Your Rent Tenure</p>
+      <p style={{ fontWeight: "bold" }}> Choose Your Rent Tenure </p>{" "}
       <form className="d-flex justify-content-evenly flex-column">
         <div className="my-2 form-check">
           <input
@@ -116,15 +117,15 @@ const PaymentPage = () => {
             name="flexRadioDefault"
             className="form-check-input"
             onClick={handleClick}
-          />
+          />{" "}
           <label
             htmlFor="flexRadioDefault1"
             style={{ marginLeft: "5px" }}
             className="form-check-label"
           >
-            15 Days
-          </label>
-        </div>
+            15 Days{" "}
+          </label>{" "}
+        </div>{" "}
         <div className="my-2 form-check">
           <input
             type="radio"
@@ -132,15 +133,15 @@ const PaymentPage = () => {
             name="flexRadioDefault"
             className="form-check-input"
             onClick={handleClick}
-          />
+          />{" "}
           <label
             htmlFor="flexRadioDefault2"
             style={{ marginLeft: "5px" }}
             className="form-check-label"
           >
-            1 Month
-          </label>
-        </div>
+            1 Month{" "}
+          </label>{" "}
+        </div>{" "}
         <div className="my-2 form-check">
           <input
             type="radio"
@@ -148,15 +149,15 @@ const PaymentPage = () => {
             name="flexRadioDefault"
             className="form-check-input"
             onClick={handleClick}
-          />
+          />{" "}
           <label
             htmlFor="flexRadioDefault3"
             style={{ marginLeft: "5px" }}
             className="form-check-label"
           >
-            3 Months
-          </label>
-        </div>
+            3 Months{" "}
+          </label>{" "}
+        </div>{" "}
         <div className="my-2 form-check">
           <input
             type="radio"
@@ -164,15 +165,15 @@ const PaymentPage = () => {
             name="flexRadioDefault"
             className="form-check-input"
             onClick={handleClick}
-          />
+          />{" "}
           <label
             htmlFor="flexRadioDefault4"
             style={{ marginLeft: "5px" }}
             className="form-check-label"
           >
-            6 Months
-          </label>
-        </div>
+            6 Months{" "}
+          </label>{" "}
+        </div>{" "}
         <div className="my-2 form-check">
           <input
             type="radio"
@@ -180,16 +181,16 @@ const PaymentPage = () => {
             name="flexRadioDefault"
             className="form-check-input"
             onClick={handleClick}
-          />
+          />{" "}
           <label
             htmlFor="flexRadioDefault5"
             style={{ marginLeft: "5px" }}
             className="form-check-label"
           >
-            12 Months
-          </label>
-        </div>
-      </form>
+            12 Months{" "}
+          </label>{" "}
+        </div>{" "}
+      </form>{" "}
       <form onSubmit={handleSubmit}>
         <div className="my-2">
           <label
@@ -197,9 +198,9 @@ const PaymentPage = () => {
             style={{ marginLeft: "5px" }}
             className="form-check-label mx-2"
           >
-            Enter the tenure according to your preference &#40;Enter Number of
-            Days only&#41;:
-          </label>
+            Enter the tenure according to your preference & #40;Enter Number of
+            Days only&# 41;:
+          </label>{" "}
           <input
             type="number"
             id="random"
@@ -208,17 +209,20 @@ const PaymentPage = () => {
             max={360}
             autoComplete="off"
           />
-          <button className="btn btn-primary mx-3">Submit</button>
-        </div>
-      </form>
-      <p style={{ fontWeight: "bold" }}>Your final amount to pay is {amount}</p>
+          <button className="btn btn-primary mx-3"> Submit </button>{" "}
+        </div>{" "}
+      </form>{" "}
+      <p style={{ fontWeight: "bold" }}>
+        {" "}
+        Your final amount to pay is {amount}{" "}
+      </p>{" "}
       <button
         className="btn btn-success"
         style={{ borderRadius: "20px", padding: "10px 20px 10px 20px" }}
         onClick={() => displayRazorpay()}
       >
-        Pay Now
-      </button>
+        Pay Now{" "}
+      </button>{" "}
     </div>
   );
 };

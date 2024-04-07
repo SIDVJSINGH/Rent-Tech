@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import backimg from "../images/backimg.png";
+import url_port from "./host";
 const Login = () => {
   const [credentials, setCredentials] = useState({
     email: "",
@@ -15,7 +16,7 @@ const Login = () => {
   let navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch("http://localhost:5000/api/auth/login", {
+    const response = await fetch(`http://${url_port}/api/auth/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

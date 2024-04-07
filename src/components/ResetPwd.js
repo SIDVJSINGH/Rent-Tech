@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import backimg from "../images/backimg.png";
 import { useNavigate, useParams } from "react-router-dom";
+import url_port from "./host";
 const ResetPwd = () => {
   let navigate = useNavigate();
   const [pwd, setPwd] = useState({ password: "", cpassword: "" });
@@ -32,7 +33,7 @@ const ResetPwd = () => {
       return;
     }
     const response = await fetch(
-      `http://localhost:5000/api/auth/reset-password/${id}/${authToken}`,
+      `http://${url_port}/api/auth/reset-password/${id}/${authToken}`,
       {
         method: "POST",
         headers: {
@@ -55,11 +56,11 @@ const ResetPwd = () => {
     <>
       <div className="container d-flex justify-content-center my-4">
         <form className="cred border border-white" onSubmit={handleSubmit}>
-          <h2 className="my-3">Reset Password</h2>
+          <h2 className="my-3"> Reset Password </h2>{" "}
           <div className="mb-3">
             <label htmlFor="password" className="form-label">
-              New Password
-            </label>
+              New Password{" "}
+            </label>{" "}
             <input
               type="password"
               className="form-control"
@@ -72,8 +73,8 @@ const ResetPwd = () => {
             />
             <div className="mb-3">
               <label htmlFor="password" className="form-label">
-                Confirm Password
-              </label>
+                Confirm Password{" "}
+              </label>{" "}
               <input
                 type="password"
                 className="form-control"
@@ -84,18 +85,18 @@ const ResetPwd = () => {
                 onChange={handleChange}
                 required
               />
-            </div>
+            </div>{" "}
             <div className="mb-3 my-2">
               <input
                 className="form-check-input"
                 type="checkbox"
                 onClick={handleClick}
-              />
+              />{" "}
               <label htmlFor="showPass" className="form-label mx-2">
-                Show Passwords
-              </label>
-            </div>
-          </div>
+                Show Passwords{" "}
+              </label>{" "}
+            </div>{" "}
+          </div>{" "}
           <button
             type="submit"
             className="btn btn-light"
@@ -105,10 +106,10 @@ const ResetPwd = () => {
               borderRadius: "100px",
             }}
           >
-            <strong>Update</strong>
-          </button>
-        </form>
-      </div>
+            <strong> Update </strong>{" "}
+          </button>{" "}
+        </form>{" "}
+      </div>{" "}
     </>
   );
 };

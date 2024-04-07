@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import url_port from "./host";
 
 const RentHome = () => {
   document.body.style.backgroundImage = "none";
@@ -64,7 +65,7 @@ const RentHome = () => {
       alert("Enter a valid product type");
     }
     const response = await fetch(
-      "http://localhost:5000/api/rent/renter-details",
+      `http://${url_port}/api/rent/renter-details`,
       {
         method: "POST",
         headers: {

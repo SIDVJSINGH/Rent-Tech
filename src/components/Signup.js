@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import backimg from "../images/backimg.png";
+import url from "./host";
 const Signup = () => {
   const [credentials, setCredentials] = useState({
     name: "",
@@ -21,7 +22,7 @@ const Signup = () => {
       alert("Password doesn't match");
       return;
     }
-    const response = await fetch("http://localhost:5000/api/auth/createuser", {
+    const response = await fetch(`http://${url}/api/auth/createuser`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
